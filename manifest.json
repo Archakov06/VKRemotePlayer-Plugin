@@ -1,0 +1,33 @@
+{
+    "name": "VK Remote Player",
+    "description": "VK Remote Player - управляй своим плеером удаленно.", 
+    "browser_action": {
+        "default_icon": {
+            "38": "icon.png"
+            }, 
+        "default_title": "VK Remote Player"
+    }, 
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": [
+      "tabs",
+      "storage",
+      "http://new.vk.com/*"
+    ],
+    "browser_action": {
+        "default_title": "VK Remote Player",
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "manifest_version": 2,
+    "version": "0.1",
+    "content_scripts": [
+        {
+          "matches": [ "*://*/*" ],
+          "js": [ "script.js" ]
+        }
+    ]
+}
+
+
