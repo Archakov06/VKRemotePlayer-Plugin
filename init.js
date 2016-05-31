@@ -31,27 +31,27 @@ window.onload = function() {
 		switch(cmd){
 
 			case 'next':
-				execute('getAudioPlayer().playPrev();');
+				getAudioPlayer().playPrev();
 			break;
 
 			case 'prev':
-				execute('getAudioPlayer().playNext();');
+				getAudioPlayer().playNext();
 			break;
 
 			case 'pause':
-				execute('getAudioPlayer().pause();');
+				getAudioPlayer().pause();
 			break;
 
 			case 'play':
-				execute('getAudioPlayer().play();');
+				getAudioPlayer().play();
 			break;
 
 			case 'vol':
-				execute('getAudioPlayer().setVolume('+val+');');
+				getAudioPlayer().setVolume('+val+');
 			break;
 
 			case 'random':
-				execute("AudioPage(document.querySelector('.audio_page_player_shuffle')).toggleShuffle(document.querySelector('.audio_page_player_shuffle'))");
+				AudioPage(document.querySelector('.audio_page_player_shuffle')).toggleShuffle(document.querySelector('.audio_page_player_shuffle'));
 			break;
 
 			case 'repeat':
