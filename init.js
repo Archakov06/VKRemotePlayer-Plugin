@@ -1,11 +1,11 @@
 window.onload = function() {
 
-	function getData(url){
+	function getData(url,callback){
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', url, false);
 		xhr.send();
 		if (xhr.status == 200) {
-		  return xhr.responseText;
+		  if (callback) callback(xhr.responseText); else return xhr.responseText;
 		}
 	}
 
@@ -94,27 +94,37 @@ window.onload = function() {
 			break;
 
 		}
+
+		if (data) clear();
 	}
 
-	setInterval(function(){
 
 		var cmd = val = "";
 
-		//checkPlayer();
+		getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id'],function(data){
 
-		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
+			if (data.indexOf('-')>=0){
+				cmd = data.split('-')[0];
+				val = data.split('-')[1];
+			} else cmd = data;
 
-		if (data.indexOf('-')>=0){
-			cmd = data.split('-')[0];
-			val = data.split('-')[1];
-		} else cmd = data;
+			console.log(data);
 
-		console.log(data);
+			run(cmd,val);
 
-		run(cmd,val);
+				getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id'],function(data){
 
-		if (data) clear();
+				if (data.indexOf('-')>=0){
+					cmd = data.split('-')[0];
+					val = data.split('-')[1];
+				} else cmd = data;
 
-	},1000);
+				console.log(data);
+
+				run(cmd,val);
+
+			});
+
+		});
 
 };
