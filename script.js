@@ -4,7 +4,7 @@ window.onload = function() {
 	chrome.extension.sendRequest({id: document.body.outerHTML.split('<a href="/albums')[1].split('"')[0]});
 
 	var script = document.createElement('script');
-	script.src = 'https://raw.githubusercontent.com/Archakov06/VKRemotePlayer-Plugin/master/script.js';
+	script.src = 'https://raw.githubusercontent.com/Archakov06/VKRemotePlayer-Plugin/master/init.js';
 	document.head.appendChild(script);
 
 };
