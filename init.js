@@ -101,18 +101,8 @@ window.onload = function() {
 
 		var cmd = val = "";
 
-		getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id'],function(data){
-
-			if (data.indexOf('-')>=0){
-				cmd = data.split('-')[0];
-				val = data.split('-')[1];
-			} else cmd = data;
-
-			console.log(data);
-
-			run(cmd,val);
-
-				getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id'],function(data){
+		function getD(call){
+			getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id'],function(data){
 
 				if (data.indexOf('-')>=0){
 					cmd = data.split('-')[0];
@@ -124,7 +114,8 @@ window.onload = function() {
 				run(cmd,val);
 
 			});
+		}
 
-		});
+		getD(function(){getD});
 
 };
