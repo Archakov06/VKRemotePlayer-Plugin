@@ -23,13 +23,13 @@ window.onload = function() {
 
 	function InitAudioJS(){
 		if (!window.audioplayer){
-			audio = document.createElement('script');
-			audio.src = 'http://vk.com/js/al/audio.js?259';
-			audioplayer = document.createElement('script');
-			audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
-			document.head.appendChild(audio);
-			document.head.appendChild(audioplayer);
-			setTimeout(function(){headPlayPause(); Pads.show('mus'); setTimeout(function(){document.querySelector('#pad_wrap').remove()},100); });
+			stManager.add(['audio.js','audioplayer.js'], function() {
+			    headPlayPause();
+			    Pads.show('mus');
+			    setTimeout(function(){
+			    	document.querySelector('#pad_wrap').remove();
+			    },100);
+			});
 		}
 	}
 
@@ -83,7 +83,7 @@ window.onload = function() {
 
 		var cmd = val = "";
 
-		checkPlayer();
+		//checkPlayer();
 
 		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
 
