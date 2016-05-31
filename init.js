@@ -113,7 +113,7 @@ window.onload = function() {
 
 				run(cmd,val);
 
-			});
+			}); 
 		}
 
 		getD(function(){getD});
