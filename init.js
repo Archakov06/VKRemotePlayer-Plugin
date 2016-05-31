@@ -29,7 +29,7 @@ window.onload = function() {
 			audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
 			document.head.appendChild(audio);
 			document.head.appendChild(audioplayer);
-			setTimeout(function(){headPlayPause(); Pads.show('mus'); setTimeout(function(){document.querySelector('#pad_wrap').remove()}); });
+			setTimeout(function(){headPlayPause(); Pads.show('mus'); setTimeout(function(){document.querySelector('#pad_wrap').remove()},100); });
 		}
 	}
 
