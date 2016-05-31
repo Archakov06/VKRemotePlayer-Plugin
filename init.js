@@ -17,6 +17,10 @@ window.onload = function() {
 		setTimeout(function(){script.remove();});
 	}
 
+	function clear(){
+		getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']+'&clear');
+	}
+
 	setInterval(function(){
 
 		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
@@ -45,8 +49,10 @@ window.onload = function() {
 			break;
 
 			case 'play':
-				window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
-				window.audioPlayer.playTrack();
+			if (!window.audioPlayer.player)
+					window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
+				else 
+					window.audioPlayer.playTrack();
 			break;
 
 			case 'vol':
@@ -63,7 +69,7 @@ window.onload = function() {
 
 		}
 
-
+		if (data) clear();
 
 	},1000);
 
