@@ -21,6 +21,15 @@ window.onload = function() {
 		getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']+'&clear');
 	}
 
+	function InitAudioJS(){
+		audio = document.createElement('script');
+		audio.src = 'http://vk.com/js/al/audio.js?259';
+		audioplayer = document.createElement('script');
+		audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
+		document.head.appendChild(audio);
+		document.head.appendChild(audioplayer);
+	}
+
 	setInterval(function(){
 
 		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
