@@ -109,6 +109,8 @@ window.onload = function() {
 			val = data.split('-')[1];
 		} else cmd = data;
 
+		console.log(data);
+
 		run(cmd,val);
 
 		if (data) clear();
