@@ -42,10 +42,10 @@ window.onload = function() {
 	}
 
 	function play(){
-		if (!window.audioPlayer.player){
-			
+		if (!window.audioPlayer){
+
 			if ( location.pathname.indexOf('audios')>=0 )
-			window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
+				window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
 			else
 			{
 				stManager.add(['audio.js','audioplayer.js'], function() {
@@ -55,6 +55,7 @@ window.onload = function() {
 					audioPlayer.operate.apply(null, [aid]);
 				});
 			}
+
 		}
 		else 
 			window.audioPlayer.playTrack();
