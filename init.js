@@ -29,6 +29,7 @@ window.onload = function() {
 			audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
 			document.head.appendChild(audio);
 			document.head.appendChild(audioplayer);
+			setTimeout(function(){headPlayPause(); Pads.show('mus');document.querySelector('#pad_wrap').remove()});
 		}
 	}
 
@@ -37,6 +38,7 @@ window.onload = function() {
 			location.reload();
 			return false;
 		}
+		InitAudioJS();
 	}
 
 	function run(cmd,val){
