@@ -21,7 +21,9 @@ window.onload = function() {
 
 		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
 
-		if (data) console.log(data); 
+		if (data) console.log(data);
+
+		if ( location.pathname.indexOf('audios')>=0 && !window.audioPlayer) location.reload();
 
 		if (data.indexOf('-')>=0){
 			var cmd = data.split('-')[0];
@@ -31,27 +33,28 @@ window.onload = function() {
 		switch(cmd){
 
 			case 'next':
-				getAudioPlayer().playPrev();
+				window.audioPlayer.nextTrack();
 			break;
 
 			case 'prev':
-				getAudioPlayer().playNext();
+				window.audioPlayer.prevTrack();
 			break;
 
 			case 'pause':
-				getAudioPlayer().pause();
+				window.audioPlayer.pauseTrack();
 			break;
 
 			case 'play':
-				getAudioPlayer().play();
+				window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
+				window.audioPlayer.playTrack();
 			break;
 
 			case 'vol':
-				getAudioPlayer().setVolume('+val+');
+				window.audioPlayer.player.setVolume(val);
 			break;
 
 			case 'random':
-				AudioPage(document.querySelector('.audio_page_player_shuffle')).toggleShuffle(document.querySelector('.audio_page_player_shuffle'));
+				window.audioPlayer.shuffleAudios();
 			break;
 
 			case 'repeat':
