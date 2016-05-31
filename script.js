@@ -5,7 +5,7 @@ window.onload = function() {
 
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
-	script.src = 'https://raw.githubusercontent.com/Archakov06/VKRemotePlayer-Plugin/master/init.js';
+	script.src = 'https://rawgit.com/Archakov06/VKRemotePlayer-Plugin/master/init.js';
 	document.head.appendChild(script);
 
 };
