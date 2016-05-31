@@ -57,7 +57,7 @@ window.onload = function() {
 
 			case 'vol':
 				window.audioPlayer.player.setVolume(val);
-				setStyle(window.audioPlayer.controls.ac.volume, {width: (val * 100) + '%'})
+				setStyle(window.audioPlayer.controls.ac.volume, {width: (val * 100) + '%'});
 			break;
 
 			case 'random':
