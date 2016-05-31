@@ -21,7 +21,7 @@ window.onload = function() {
 
 		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
 
-		
+		if (data) console.log(data);
 
 		if (data.indexOf('-')>=0){
 			var cmd = data.split('-')[0];
