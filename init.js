@@ -41,6 +41,23 @@ window.onload = function() {
 		InitAudioJS();
 	}
 
+	function play(){
+		if (!window.audioPlayer.player){
+			
+			if ( location.pathname.indexOf('audios')>=0 )
+			window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
+			else
+			{
+				var data = getData('/audios'+localStorage['vkrp_id']);
+				var doc = new DOMParser().parseFromString(data, "text/html");
+				var aid = doc.querySelector('.play_new').getAttribute('id').substr(4,doc.querySelector('.play_new').getAttribute('id').length);
+				audioPlayer.operate.apply(null, [aid]);
+			}
+		}
+		else 
+			window.audioPlayer.playTrack();
+	}
+
 	function run(cmd,val){
 		switch(cmd){
 
@@ -57,10 +74,7 @@ window.onload = function() {
 			break;
 
 			case 'play':
-			if (!window.audioPlayer.player)
-					window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
-				else 
-					window.audioPlayer.playTrack();
+				play();
 			break;
 
 			case 'vol':
