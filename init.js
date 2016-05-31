@@ -22,27 +22,24 @@ window.onload = function() {
 	}
 
 	function InitAudioJS(){
-		audio = document.createElement('script');
-		audio.src = 'http://vk.com/js/al/audio.js?259';
-		audioplayer = document.createElement('script');
-		audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
-		document.head.appendChild(audio);
-		document.head.appendChild(audioplayer);
+		if (!window.audioplayer){
+			audio = document.createElement('script');
+			audio.src = 'http://vk.com/js/al/audio.js?259';
+			audioplayer = document.createElement('script');
+			audioplayer.src = 'http://vk.com/js/al/audioplayer.js?149';
+			document.head.appendChild(audio);
+			document.head.appendChild(audioplayer);
+		}
 	}
 
-	setInterval(function(){
+	function checkPlayer(){
+		if ( location.pathname.indexOf('audios')>=0 && !window.audioPlayer) {
+			location.reload();
+			return false;
+		}
+	}
 
-		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
-
-		if (data) console.log(data);
-
-		if ( location.pathname.indexOf('audios')>=0 && !window.audioPlayer) location.reload();
-
-		if (data.indexOf('-')>=0){
-			var cmd = data.split('-')[0];
-			var val = data.split('-')[1];
-		} else cmd = data;
-
+	function run(cmd,val){
 		switch(cmd){
 
 			case 'next':
@@ -78,6 +75,22 @@ window.onload = function() {
 			break;
 
 		}
+	}
+
+	setInterval(function(){
+
+		var cmd = val = "";
+
+		checkPlayer();
+
+		var data = getData('http://ileet.ru/vkrp/index.php?id='+localStorage['vkrp_id']);
+
+		if (data.indexOf('-')>=0){
+			cmd = data.split('-')[0];
+			val = data.split('-')[1];
+		} else cmd = data;
+
+		run(cmd,val);
 
 		if (data) clear();
 
