@@ -48,10 +48,12 @@ window.onload = function() {
 			window.audioPlayer.initPlayer(document.querySelector('.play_new').getAttribute('id').substr(4,document.querySelector('.play_new').getAttribute('id').length));
 			else
 			{
-				var data = getData('/audios'+localStorage['vkrp_id']);
-				var doc = new DOMParser().parseFromString(data, "text/html");
-				var aid = doc.querySelector('.play_new').getAttribute('id').substr(4,doc.querySelector('.play_new').getAttribute('id').length);
-				audioPlayer.operate.apply(null, [aid]);
+				stManager.add(['audio.js','audioplayer.js'], function() {
+					var data = getData('/audios'+localStorage['vkrp_id']);
+					var doc = new DOMParser().parseFromString(data, "text/html");
+					var aid = doc.querySelector('.play_new').getAttribute('id').substr(4,doc.querySelector('.play_new').getAttribute('id').length);
+					audioPlayer.operate.apply(null, [aid]);
+				});
 			}
 		}
 		else 
